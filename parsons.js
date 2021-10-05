@@ -1009,6 +1009,8 @@
      this.extra_lines = initial_structures.distractors;
      this.modified_lines = initial_structures.widgetInitial;
      var id_prefix = this.id_prefix;
+
+     console.trace();
      
      // Add ids to the line objects in the user-draggable lines
      $.each(this.modified_lines, function(index, item) {

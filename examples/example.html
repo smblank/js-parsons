@@ -15,8 +15,12 @@
         <p><strong>Note:</strong> The correct solution is obviously a dumb way to do
             it. This exercise is merely trying to give an example of a Parson's
             puzzle with js-parsons, not teach you Python :)</p>
-        <div id="sortableTrash" class="sortable-code"></div>
-        <div id="sortable" class="sortable-code">
+        <div id="parsons_container" class="parsons_container">
+            <div id="sortable1" class="sortable-code"></div>
+            <div id="sortableTrash" class="sortable-code"></div>
+            <div id="sortable2" class="sortable-code"></div>
+            <!-- <div id="sortableTrash2" class="sortable-code"></div> -->
+        </div>
         </div>
         <div style="clear:both;"></div>
         <p>
@@ -43,21 +47,31 @@
         } 
 
         $(document).ready(function(){
-            var parson = new ParsonsWidget({
-                'sortableId': 'sortable',
+            var parson1 = new ParsonsWidget({
+                'sortableId': 'sortable1',
                 'trashId': 'sortableTrash',
                 'max_wrong_lines': 1,
                 'feedback_cb' : displayErrors
             });
-            parson.init(initial);
-            parson.shuffleLines();
+
+            var parson2 = new ParsonsWidget({
+                'sortableId': 'sortable2',
+                'trashId': 'sortableTrash',
+                'max_wrong_lines': 1,
+                'feedback_cb' : displayErrors
+            });
+
+            parson1.init(initial);
+            parson2.init(initial);
+            parson1.shuffleLines();
+            parson2.shuffleLines();
             $("#newInstanceLink").click(function(event){
                 event.preventDefault();
-                parson.shuffleLines();
+                parson1.shuffleLines();
             });
             $("#feedbackLink").click(function(event){
                 event.preventDefault();
-                parson.getFeedback();
+                parson1.getFeedback();
             });
         });
         </script>
